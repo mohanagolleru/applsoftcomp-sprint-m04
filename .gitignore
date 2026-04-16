@@ -18,6 +18,7 @@ supp.pdf
 *.csv
 *.tsv
 *.txt
+!data/*.csv
 
 # Office files
 *.docx
@@ -96,3 +97,6 @@ docs/_build/
 
 # PyBuilder
 target/
+
+# Answer
+.answer.py
