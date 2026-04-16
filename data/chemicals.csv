@@ -1,0 +1,180 @@
+name,class
+water,Solvent
+ethanol,Solvent
+methanol,Solvent
+acetone,Solvent
+benzene,Solvent
+toluene,Solvent
+hexane,Solvent
+chloroform,Solvent
+dimethyl sulfoxide,Solvent
+dichloromethane,Solvent
+diethyl ether,Solvent
+ethyl acetate,Solvent
+tetrahydrofuran,Solvent
+acetonitrile,Solvent
+pyridine,Solvent
+methane,Alkane
+ethane,Alkane
+propane,Alkane
+butane,Alkane
+pentane,Alkane
+hexane (n-hexane),Alkane
+heptane,Alkane
+octane,Alkane
+cyclohexane,Alkane
+isooctane,Alkane
+isopropanol,Alcohol
+n-butanol,Alcohol
+glycerol,Alcohol
+ethylene glycol,Alcohol
+propylene glycol,Alcohol
+phenol,Aromatic
+styrene,Aromatic
+xylene,Aromatic
+naphthalene,Aromatic
+anthracene,Aromatic
+aniline,Aromatic
+pyrene,Aromatic
+aspirin,Drug
+ibuprofen,Drug
+acetaminophen,Drug
+caffeine,Drug
+morphine,Drug
+penicillin,Drug
+insulin,Drug
+metformin,Drug
+atorvastatin,Drug
+fluoxetine,Drug
+amoxicillin,Drug
+lisinopril,Drug
+omeprazole,Drug
+albuterol,Drug
+warfarin,Drug
+codeine,Drug
+heparin,Drug
+tamoxifen,Drug
+paclitaxel,Drug
+hydrochloric acid,Acid
+sulfuric acid,Acid
+nitric acid,Acid
+acetic acid,Acid
+citric acid,Acid
+formic acid,Acid
+phosphoric acid,Acid
+hydrofluoric acid,Acid
+lactic acid,Acid
+oxalic acid,Acid
+carbonic acid,Acid
+sodium hydroxide,Base
+potassium hydroxide,Base
+ammonia,Base
+sodium bicarbonate,Base
+calcium hydroxide,Base
+magnesium hydroxide,Base
+sodium carbonate,Base
+sodium chloride,Salt
+potassium chloride,Salt
+calcium carbonate,Salt
+magnesium sulfate,Salt
+calcium chloride,Salt
+sodium nitrate,Salt
+potassium nitrate,Salt
+ammonium chloride,Salt
+copper sulfate,Salt
+iron sulfate,Salt
+sodium fluoride,Salt
+oxygen,Gas
+nitrogen,Gas
+carbon dioxide,Gas
+hydrogen,Gas
+helium,Gas
+argon,Gas
+chlorine,Gas
+ozone,Gas
+carbon monoxide,Gas
+nitrous oxide,Gas
+sulfur dioxide,Gas
+hydrogen sulfide,Gas
+neon,Gas
+polyethylene,Polymer
+polystyrene,Polymer
+polypropylene,Polymer
+polyvinyl chloride,Polymer
+nylon,Polymer
+polytetrafluoroethylene,Polymer
+polyester,Polymer
+polyurethane,Polymer
+kevlar,Polymer
+polycarbonate,Polymer
+polylactic acid,Polymer
+rubber,Polymer
+silicone,Polymer
+glucose,Sugar
+fructose,Sugar
+sucrose,Sugar
+lactose,Sugar
+maltose,Sugar
+galactose,Sugar
+ribose,Sugar
+starch,Sugar
+cellulose,Sugar
+glycogen,Sugar
+glycine,Amino Acid
+alanine,Amino Acid
+valine,Amino Acid
+leucine,Amino Acid
+tyrosine,Amino Acid
+tryptophan,Amino Acid
+cysteine,Amino Acid
+lysine,Amino Acid
+glutamic acid,Amino Acid
+serine,Amino Acid
+threonine,Amino Acid
+ascorbic acid,Vitamin
+retinol,Vitamin
+thiamine,Vitamin
+riboflavin,Vitamin
+niacin,Vitamin
+pyridoxine,Vitamin
+folate,Vitamin
+cobalamin,Vitamin
+cholecalciferol,Vitamin
+tocopherol,Vitamin
+iron,Metal
+copper,Metal
+gold,Metal
+silver,Metal
+aluminum,Metal
+titanium,Metal
+lead,Metal
+mercury,Metal
+zinc,Metal
+nickel,Metal
+platinum,Metal
+uranium,Metal
+sodium,Metal
+potassium,Metal
+calcium,Metal
+quartz,Mineral
+calcite,Mineral
+feldspar,Mineral
+gypsum,Mineral
+hematite,Mineral
+pyrite,Mineral
+graphite,Mineral
+diamond,Mineral
+cholesterol,Lipid
+palmitic acid,Lipid
+oleic acid,Lipid
+linoleic acid,Lipid
+stearic acid,Lipid
+lecithin,Lipid
+triolein,Lipid
+TNT,Explosive
+nitroglycerin,Explosive
+RDX,Explosive
+HMX,Explosive
+PETN,Explosive
+ammonium nitrate,Explosive
+picric acid,Explosive

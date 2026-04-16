@@ -1,0 +1,158 @@
+name,type,region
+Harvard University,Ivy,Northeast
+Yale University,Ivy,Northeast
+Princeton University,Ivy,Northeast
+Columbia University,Ivy,Northeast
+University of Pennsylvania,Ivy,Northeast
+Brown University,Ivy,Northeast
+Dartmouth College,Ivy,Northeast
+Cornell University,Ivy,Northeast
+Stanford University,Elite Private,West
+Duke University,Elite Private,South
+Northwestern University,Elite Private,Midwest
+Johns Hopkins University,Elite Private,South
+Vanderbilt University,Elite Private,South
+University of Chicago,Elite Private,Midwest
+Washington University in St. Louis,Elite Private,Midwest
+Rice University,Elite Private,South
+Tufts University,Elite Private,Northeast
+Emory University,Elite Private,South
+University of Southern California,Elite Private,West
+New York University,Elite Private,Northeast
+MIT,Tech,Northeast
+Caltech,Tech,West
+Carnegie Mellon University,Tech,Northeast
+Georgia Tech,Tech,South
+Virginia Tech,Tech,South
+Illinois Institute of Technology,Tech,Midwest
+Rensselaer Polytechnic Institute,Tech,Northeast
+Worcester Polytechnic Institute,Tech,Northeast
+Colorado School of Mines,Tech,West
+Rose-Hulman Institute of Technology,Tech,Midwest
+UC Berkeley,Public Flagship,West
+UCLA,Public Flagship,West
+University of Michigan,Public Flagship,Midwest
+University of Virginia,Public Flagship,South
+University of North Carolina,Public Flagship,South
+University of Texas at Austin,Public Flagship,South
+University of Wisconsin-Madison,Public Flagship,Midwest
+University of Illinois Urbana-Champaign,Public Flagship,Midwest
+University of Washington,Public Flagship,West
+University of Florida,Public Flagship,South
+University of Georgia,Public Flagship,South
+Ohio State University,Public Flagship,Midwest
+Penn State University,Public Flagship,Northeast
+Purdue University,Public Flagship,Midwest
+Texas A&M University,Public Flagship,South
+University of Minnesota,Public Flagship,Midwest
+University of Maryland,Public Flagship,South
+Indiana University Bloomington,Public Flagship,Midwest
+Michigan State University,Public Flagship,Midwest
+University of Arizona,Public Flagship,West
+University of Colorado Boulder,Public Flagship,West
+University of Iowa,Public Flagship,Midwest
+Rutgers University,Public Flagship,Northeast
+Arizona State University,Public Regional,West
+University of Central Florida,Public Regional,South
+Florida International University,Public Regional,South
+University of Houston,Public Regional,South
+California State University Northridge,Public Regional,West
+San Diego State University,Public Regional,West
+Portland State University,Public Regional,West
+Western Kentucky University,Public Regional,South
+University of Wyoming,Public Regional,West
+University of Montana,Public Regional,West
+University of Alabama,Public Regional,South
+Mississippi State University,Public Regional,South
+Iowa State University,Public Regional,Midwest
+Florida State University,Public Regional,South
+Colorado State University,Public Regional,West
+Cal State LA,Public Regional,West
+University of Nevada Reno,Public Regional,West
+University of Alaska Fairbanks,Public Regional,West
+University of Hawaii at Manoa,Public Regional,West
+Amherst College,Liberal Arts,Northeast
+Williams College,Liberal Arts,Northeast
+Swarthmore College,Liberal Arts,Northeast
+Oberlin College,Liberal Arts,Midwest
+Pomona College,Liberal Arts,West
+Bowdoin College,Liberal Arts,Northeast
+Carleton College,Liberal Arts,Midwest
+Middlebury College,Liberal Arts,Northeast
+Haverford College,Liberal Arts,Northeast
+Vassar College,Liberal Arts,Northeast
+Grinnell College,Liberal Arts,Midwest
+Davidson College,Liberal Arts,South
+Claremont McKenna College,Liberal Arts,West
+Reed College,Liberal Arts,West
+Kenyon College,Liberal Arts,Midwest
+Whitman College,Liberal Arts,West
+Howard University,HBCU,South
+Spelman College,HBCU,South
+Morehouse College,HBCU,South
+Hampton University,HBCU,South
+Tuskegee University,HBCU,South
+Fisk University,HBCU,South
+Xavier University of Louisiana,HBCU,South
+Florida A&M University,HBCU,South
+North Carolina A&T State University,HBCU,South
+Morgan State University,HBCU,South
+Dillard University,HBCU,South
+Clark Atlanta University,HBCU,South
+Notre Dame,Religious,Midwest
+Georgetown University,Religious,South
+Boston College,Religious,Northeast
+Fordham University,Religious,Northeast
+Brigham Young University,Religious,West
+Baylor University,Religious,South
+Villanova University,Religious,Northeast
+Liberty University,Religious,South
+Southern Methodist University,Religious,South
+Wheaton College,Religious,Midwest
+Gonzaga University,Religious,West
+Loyola University Chicago,Religious,Midwest
+Yeshiva University,Religious,Northeast
+Wellesley College,Womens,Northeast
+Smith College,Womens,Northeast
+Mount Holyoke College,Womens,Northeast
+Bryn Mawr College,Womens,Northeast
+Barnard College,Womens,Northeast
+Scripps College,Womens,West
+United States Military Academy,Service Academy,Northeast
+United States Naval Academy,Service Academy,South
+United States Air Force Academy,Service Academy,West
+United States Coast Guard Academy,Service Academy,Northeast
+United States Merchant Marine Academy,Service Academy,Northeast
+University of Phoenix,For-Profit,West
+Southern New Hampshire University,For-Profit,Northeast
+Western Governors University,For-Profit,West
+Grand Canyon University,For-Profit,West
+DeVry University,For-Profit,Midwest
+Capella University,For-Profit,Midwest
+Full Sail University,For-Profit,South
+Strayer University,For-Profit,South
+Walden University,For-Profit,Midwest
+Community College of Philadelphia,Community College,Northeast
+Miami Dade College,Community College,South
+Houston Community College,Community College,South
+Santa Monica College,Community College,West
+Pasadena City College,Community College,West
+Northern Virginia Community College,Community College,South
+Tarrant County College,Community College,South
+Lone Star College,Community College,South
+Austin Community College,Community College,South
+Broward College,Community College,South
+Valencia College,Community College,South
+Ivy Tech Community College,Community College,Midwest
+Tribal College of Dine,Tribal,West
+Haskell Indian Nations University,Tribal,Midwest
+Salish Kootenai College,Tribal,West
+Sinte Gleska University,Tribal,Midwest
+United Tribes Technical College,Tribal,Midwest
+Berklee College of Music,Specialized Arts,Northeast
+Juilliard School,Specialized Arts,Northeast
+Rhode Island School of Design,Specialized Arts,Northeast
+Parsons School of Design,Specialized Arts,Northeast
+Pratt Institute,Specialized Arts,Northeast
+School of the Art Institute of Chicago,Specialized Arts,Midwest
+California Institute of the Arts,Specialized Arts,West

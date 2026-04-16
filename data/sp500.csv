@@ -1,0 +1,204 @@
+name,sector
+Apple,Information Technology
+Microsoft,Information Technology
+NVIDIA,Information Technology
+Broadcom,Information Technology
+Oracle,Information Technology
+Salesforce,Information Technology
+Adobe,Information Technology
+Advanced Micro Devices,Information Technology
+Intel,Information Technology
+Cisco Systems,Information Technology
+IBM,Information Technology
+Qualcomm,Information Technology
+Texas Instruments,Information Technology
+Palo Alto Networks,Information Technology
+ServiceNow,Information Technology
+Accenture,Information Technology
+Intuit,Information Technology
+Micron Technology,Information Technology
+Applied Materials,Information Technology
+Lam Research,Information Technology
+Analog Devices,Information Technology
+KLA Corporation,Information Technology
+Automatic Data Processing,Information Technology
+Fortinet,Information Technology
+Workday,Information Technology
+Alphabet,Communication Services
+Meta Platforms,Communication Services
+Netflix,Communication Services
+Comcast,Communication Services
+Walt Disney,Communication Services
+Verizon Communications,Communication Services
+AT&T,Communication Services
+T-Mobile US,Communication Services
+Charter Communications,Communication Services
+Warner Bros. Discovery,Communication Services
+Electronic Arts,Communication Services
+Take-Two Interactive,Communication Services
+Fox Corporation,Communication Services
+Paramount Global,Communication Services
+Omnicom Group,Communication Services
+Amazon,Consumer Discretionary
+Tesla,Consumer Discretionary
+Home Depot,Consumer Discretionary
+McDonald's,Consumer Discretionary
+Nike,Consumer Discretionary
+Lowe's,Consumer Discretionary
+Starbucks,Consumer Discretionary
+Booking Holdings,Consumer Discretionary
+TJX Companies,Consumer Discretionary
+Chipotle Mexican Grill,Consumer Discretionary
+Marriott International,Consumer Discretionary
+General Motors,Consumer Discretionary
+Ford Motor,Consumer Discretionary
+Ross Stores,Consumer Discretionary
+Best Buy,Consumer Discretionary
+Target,Consumer Discretionary
+Yum! Brands,Consumer Discretionary
+Hilton Worldwide,Consumer Discretionary
+Royal Caribbean Cruises,Consumer Discretionary
+Carnival Corporation,Consumer Discretionary
+Procter & Gamble,Consumer Staples
+Costco Wholesale,Consumer Staples
+Walmart,Consumer Staples
+Coca-Cola,Consumer Staples
+PepsiCo,Consumer Staples
+Philip Morris International,Consumer Staples
+Mondelez International,Consumer Staples
+Altria Group,Consumer Staples
+Colgate-Palmolive,Consumer Staples
+Kimberly-Clark,Consumer Staples
+Kraft Heinz,Consumer Staples
+Estee Lauder,Consumer Staples
+General Mills,Consumer Staples
+Kellogg,Consumer Staples
+Kroger,Consumer Staples
+Sysco,Consumer Staples
+Archer-Daniels-Midland,Consumer Staples
+UnitedHealth Group,Health Care
+Johnson & Johnson,Health Care
+Eli Lilly,Health Care
+AbbVie,Health Care
+Merck,Health Care
+Pfizer,Health Care
+Thermo Fisher Scientific,Health Care
+Abbott Laboratories,Health Care
+Bristol-Myers Squibb,Health Care
+Danaher,Health Care
+Amgen,Health Care
+Medtronic,Health Care
+Gilead Sciences,Health Care
+CVS Health,Health Care
+Regeneron Pharmaceuticals,Health Care
+Vertex Pharmaceuticals,Health Care
+Moderna,Health Care
+Intuitive Surgical,Health Care
+Cigna,Health Care
+Humana,Health Care
+Boston Scientific,Health Care
+Stryker,Health Care
+Zoetis,Health Care
+Biogen,Health Care
+JPMorgan Chase,Financials
+Bank of America,Financials
+Wells Fargo,Financials
+Goldman Sachs,Financials
+Morgan Stanley,Financials
+American Express,Financials
+BlackRock,Financials
+Charles Schwab,Financials
+S&P Global,Financials
+Citigroup,Financials
+Chubb,Financials
+Berkshire Hathaway,Financials
+Visa,Financials
+Mastercard,Financials
+PayPal,Financials
+Intercontinental Exchange,Financials
+CME Group,Financials
+Progressive,Financials
+Travelers Companies,Financials
+MetLife,Financials
+Allstate,Financials
+Moody's,Financials
+Marsh McLennan,Financials
+Aon,Financials
+Boeing,Industrials
+Caterpillar,Industrials
+Honeywell International,Industrials
+Union Pacific,Industrials
+General Electric,Industrials
+RTX,Industrials
+Lockheed Martin,Industrials
+Deere,Industrials
+Northrop Grumman,Industrials
+3M,Industrials
+Emerson Electric,Industrials
+Illinois Tool Works,Industrials
+CSX,Industrials
+Norfolk Southern,Industrials
+Delta Air Lines,Industrials
+American Airlines,Industrials
+United Airlines Holdings,Industrials
+Southwest Airlines,Industrials
+FedEx,Industrials
+United Parcel Service,Industrials
+Waste Management,Industrials
+Uber Technologies,Industrials
+ExxonMobil,Energy
+Chevron,Energy
+ConocoPhillips,Energy
+EOG Resources,Energy
+Pioneer Natural Resources,Energy
+Schlumberger,Energy
+Marathon Petroleum,Energy
+Phillips 66,Energy
+Valero Energy,Energy
+Occidental Petroleum,Energy
+Kinder Morgan,Energy
+Williams Companies,Energy
+Baker Hughes,Energy
+Halliburton,Energy
+Devon Energy,Energy
+NextEra Energy,Utilities
+Southern Company,Utilities
+Duke Energy,Utilities
+Dominion Energy,Utilities
+Exelon,Utilities
+American Electric Power,Utilities
+Sempra Energy,Utilities
+PG&E,Utilities
+Xcel Energy,Utilities
+Consolidated Edison,Utilities
+Public Service Enterprise Group,Utilities
+WEC Energy Group,Utilities
+Eversource Energy,Utilities
+Linde,Materials
+Sherwin-Williams,Materials
+Air Products and Chemicals,Materials
+Freeport-McMoRan,Materials
+Ecolab,Materials
+Dow,Materials
+Newmont,Materials
+PPG Industries,Materials
+Nucor,Materials
+International Paper,Materials
+Corteva,Materials
+LyondellBasell,Materials
+DuPont,Materials
+Mosaic,Materials
+Prologis,Real Estate
+American Tower,Real Estate
+Equinix,Real Estate
+Crown Castle,Real Estate
+Public Storage,Real Estate
+Simon Property Group,Real Estate
+Digital Realty Trust,Real Estate
+Realty Income,Real Estate
+Welltower,Real Estate
+SBA Communications,Real Estate
+Weyerhaeuser,Real Estate
+AvalonBay Communities,Real Estate
+Equity Residential,Real Estate
+Boston Properties,Real Estate
