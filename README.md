@@ -1,4 +1,5 @@
 # Sprint M04 — Semantic Axes  *(Mohan Golleru + Rahul)*
+- Rahul Balamurugan
 
 Build a **semantic map**: pick terms, design two semantic axes from opposing word sets, produce one publication-quality 2D scatterplot.
 
