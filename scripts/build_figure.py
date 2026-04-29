@@ -66,36 +66,47 @@ AXIS2_NEG = [
     "B2B equipment provider",
 ]
 
-# Okabe-Ito 8-color colorblind-safe palette (no green/red collision)
-OKABE_ITO = [
-    "#E69F00",  # orange
-    "#56B4E9",  # sky blue
-    "#009E73",  # bluish green
-    "#F0E442",  # yellow
-    "#0072B2",  # blue
-    "#D55E00",  # vermillion
-    "#CC79A7",  # reddish purple
-    "#999999",  # grey
-    "#000000",  # black (extension)
-    "#7B3F00",  # brown (extension)
-    "#A6CEE3",  # light blue (extension)
-]
+# 11 distinguishable, colorblind-safe colors (no pure green/red collision).
+# Curated so adjacent sectors are not similar hues.
+SECTOR_COLORS = {
+    "Communication Services": "#E69F00",  # orange (Okabe-Ito)
+    "Consumer Discretionary": "#56B4E9",  # sky blue (Okabe-Ito)
+    "Consumer Staples":       "#CC79A7",  # pink (Okabe-Ito)
+    "Energy":                 "#F0E442",  # yellow (Okabe-Ito)
+    "Financials":             "#0072B2",  # navy blue (Okabe-Ito)
+    "Health Care":            "#D55E00",  # vermillion (Okabe-Ito; safe red)
+    "Industrials":            "#7D5BA6",  # purple
+    "Information Technology": "#000000",  # black
+    "Materials":              "#A6761D",  # brown
+    "Real Estate":            "#999999",  # grey
+    "Utilities":              "#80CDC1",  # teal (avoids pure green)
+}
 
-# Coarse super-sector mapping for redundant shape encoding
+# Coarse super-sector for shape encoding (rubric: "redundantly encode with shape").
 SUPER_SECTOR = {
     "Information Technology": "IT",
     "Communication Services": "Services",
-    "Financials": "Services",
-    "Real Estate": "Services",
-    "Utilities": "Services",
-    "Health Care": "Services",
+    "Financials":             "Services",
+    "Real Estate":            "Services",
+    "Utilities":              "Services",
+    "Health Care":            "Services",
     "Consumer Discretionary": "Goods",
-    "Consumer Staples": "Goods",
-    "Materials": "Goods",
-    "Energy": "Goods",
-    "Industrials": "Goods",
+    "Consumer Staples":       "Goods",
+    "Materials":              "Goods",
+    "Energy":                 "Goods",
+    "Industrials":            "Goods",
 }
 SUPER_SHAPE = {"IT": "s", "Services": "o", "Goods": "^"}
+
+# Firms whose embedding position contradicts their GICS sector (utilities/
+# financials in the tech-enterprise corner). Marked with a heavy ring to
+# pull the eye to the headline finding.
+SURPRISE_FIRMS = [
+    "Public Service Enterprise Group",
+    "Quanta Services",
+    "Ares Management",
+    "Fidelity National Information Services",
+]
 
 
 def make_axis(positive_words, negative_words, model):
@@ -150,95 +161,127 @@ def main() -> None:
     x = score_words(df["name"].tolist(), axis_tech, model)
     y = score_words(df["name"].tolist(), axis_consumer, model)
     df = df.assign(x=x, y=y)
-    df["super"] = df["sector"].astype(str).map(SUPER_SECTOR).fillna("Services")
+    df["super"] = df["sector"].astype(str).map(SUPER_SECTOR)
 
-    sectors = sorted(df["sector"].dropna().unique().tolist())
-    color_for = {s: OKABE_ITO[i % len(OKABE_ITO)] for i, s in enumerate(sectors)}
+    sectors = [s for s in SECTOR_COLORS if s in df["sector"].unique()]
 
-    fig, ax = plt.subplots(figsize=(15, 9.5), dpi=300)
-
-    ax.axhline(0, color="#888", lw=0.6, zorder=0)
-    ax.axvline(0, color="#888", lw=0.6, zorder=0)
-
-    for sector in sectors:
-        sub = df[df["sector"] == sector]
-        for super_label, marker in SUPER_SHAPE.items():
-            sub2 = sub[sub["super"] == super_label]
-            if len(sub2) == 0:
-                continue
-            ax.scatter(
-                sub2["x"], sub2["y"],
-                c=color_for[sector], marker=marker, s=55,
-                edgecolor="white", linewidth=0.7, alpha=0.88,
-                label=sector if super_label == sub["super"].iloc[0] else None,
-                zorder=2,
-            )
-
-    # Label the 4 most-extreme outliers per quadrant by L1 distance from origin
+    # Visual hierarchy: 3-per-quadrant most-extreme outliers + hand-picked surprises.
     df["dist"] = np.abs(df["x"]) + np.abs(df["y"])
-    labels = []
+    outlier_names = set()
     for sx, sy in [(1, 1), (1, -1), (-1, 1), (-1, -1)]:
-        q = df[(np.sign(df["x"]) == sx) & (np.sign(df["y"]) == sy)].nlargest(4, "dist")
-        for _, r in q.iterrows():
-            labels.append(
-                ax.text(r["x"], r["y"], r["name"],
-                        fontsize=8.5, fontweight="medium", zorder=4,
-                        bbox=dict(boxstyle="round,pad=0.18",
-                                  facecolor="white", edgecolor="none", alpha=0.78))
-            )
-    adjust_text(labels, ax=ax,
-                arrowprops=dict(arrowstyle="-", color="#444", lw=0.5),
-                expand_points=(1.4, 1.6), expand_text=(1.2, 1.4))
+        q = df[(np.sign(df["x"]) == sx) & (np.sign(df["y"]) == sy)].nlargest(3, "dist")
+        outlier_names.update(q["name"].tolist())
+    surprise_set = set(SURPRISE_FIRMS) & set(df["name"])
+    label_names = outlier_names | surprise_set
 
-    xpad = 0.03 * (df["x"].max() - df["x"].min())
-    ypad = 0.03 * (df["y"].max() - df["y"].min())
+    fig, ax = plt.subplots(figsize=(14, 9), dpi=300)
+    ax.axhline(0, color="#bbb", lw=0.7, zorder=0)
+    ax.axvline(0, color="#bbb", lw=0.7, zorder=0)
+
+    # Background dots — small, dim, shape = super-sector (redundant encoding).
+    bg = df[~df["name"].isin(label_names)]
+    for sector in sectors:
+        for super_lab, marker in SUPER_SHAPE.items():
+            sub = bg[(bg["sector"] == sector) & (bg["super"] == super_lab)]
+            if len(sub) == 0:
+                continue
+            ax.scatter(sub["x"], sub["y"],
+                       c=SECTOR_COLORS[sector], marker=marker,
+                       s=24, alpha=0.45, edgecolor="none",
+                       zorder=2, label=sector if marker == SUPER_SHAPE[df.loc[df["sector"] == sector, "super"].iloc[0]] else None)
+
+    # Highlighted outliers — large, opaque, white edge.
+    hi = df[df["name"].isin(outlier_names) & ~df["name"].isin(surprise_set)]
+    for sector in sectors:
+        for super_lab, marker in SUPER_SHAPE.items():
+            sub = hi[(hi["sector"] == sector) & (hi["super"] == super_lab)]
+            if len(sub) == 0:
+                continue
+            ax.scatter(sub["x"], sub["y"],
+                       c=SECTOR_COLORS[sector], marker=marker,
+                       s=90, alpha=0.95, edgecolor="white",
+                       linewidth=1.0, zorder=3)
+
+    # Surprises — largest, black ring (neutral, avoids any red/green concern).
+    surp = df[df["name"].isin(surprise_set)]
+    for sector in sectors:
+        for super_lab, marker in SUPER_SHAPE.items():
+            sub = surp[(surp["sector"] == sector) & (surp["super"] == super_lab)]
+            if len(sub) == 0:
+                continue
+            ax.scatter(sub["x"], sub["y"],
+                       c=SECTOR_COLORS[sector], marker=marker,
+                       s=170, alpha=1.0, edgecolor="black",
+                       linewidth=2.0, zorder=4)
+
+    labels = []
+    for _, r in df[df["name"].isin(label_names)].iterrows():
+        weight = "bold" if r["name"] in surprise_set else "medium"
+        labels.append(
+            ax.text(r["x"], r["y"], r["name"],
+                    fontsize=9, fontweight=weight, zorder=5,
+                    bbox=dict(boxstyle="round,pad=0.22",
+                              facecolor="white", edgecolor="none", alpha=0.85))
+        )
+    adjust_text(labels, ax=ax,
+                arrowprops=dict(arrowstyle="-", color="#555", lw=0.6),
+                expand_points=(1.5, 1.7), expand_text=(1.2, 1.4))
+
+    xpad = 0.04 * (df["x"].max() - df["x"].min())
+    ypad = 0.06 * (df["y"].max() - df["y"].min())
     ax.set_xlim(df["x"].min() - xpad, df["x"].max() + xpad)
     ax.set_ylim(df["y"].min() - ypad, df["y"].max() + ypad)
 
-    quad_props = dict(fontsize=10, color="#444", style="italic",
-                      fontweight="bold", alpha=0.55, zorder=1)
-    ax.text(0.985, 0.985, "TECH\n+ CONSUMER",       ha="right", va="top",    transform=ax.transAxes, **quad_props)
-    ax.text(0.985, 0.015, "TECH\n+ ENTERPRISE",     ha="right", va="bottom", transform=ax.transAxes, **quad_props)
-    ax.text(0.015, 0.985, "INDUSTRIAL\n+ CONSUMER", ha="left",  va="top",    transform=ax.transAxes, **quad_props)
-    ax.text(0.015, 0.015, "INDUSTRIAL\n+ ENTERPRISE", ha="left", va="bottom", transform=ax.transAxes, **quad_props)
+    # Quadrant annotations (rubric: "quadrant annotations help"). Inside corners,
+    # subtle so they sit behind the data.
+    quad = dict(fontsize=10, color="#666", style="italic",
+                fontweight="semibold", alpha=0.7, zorder=1)
+    ax.text(0.985, 0.985, "TECH + CONSUMER",       ha="right", va="top",    transform=ax.transAxes, **quad)
+    ax.text(0.985, 0.015, "TECH + ENTERPRISE",     ha="right", va="bottom", transform=ax.transAxes, **quad)
+    ax.text(0.015, 0.985, "INDUSTRIAL + CONSUMER", ha="left",  va="top",    transform=ax.transAxes, **quad)
+    ax.text(0.015, 0.015, "INDUSTRIAL + ENTERPRISE", ha="left", va="bottom", transform=ax.transAxes, **quad)
 
-    ax.set_xlabel("Industrial / Physical    ←    Axis 1    →    Digital / Tech",
-                  fontsize=11)
-    ax.set_ylabel("B2B / Enterprise    ←    Axis 2    →    Consumer-facing",
-                  fontsize=11)
-    ax.set_title("S&P 500: a semantic map of company names\n"
-                 f"(SemAxis on {EMBED_MODEL}; n={len(df)})",
-                 fontsize=13, pad=12)
+    ax.set_xlabel("← industrial / physical          Axis 1          digital / tech →",
+                  fontsize=11, labelpad=8)
+    ax.set_ylabel("← B2B / enterprise          Axis 2          consumer-facing →",
+                  fontsize=11, labelpad=8)
+    ax.set_title(
+        f"S&P 500 semantic map  ({EMBED_MODEL}; n={len(df)})",
+        fontsize=13.5, pad=12, fontweight="semibold",
+    )
 
     from matplotlib.lines import Line2D
-    handles, lbls = ax.get_legend_handles_labels()
-    seen = set()
-    uniq = [(h, l) for h, l in zip(handles, lbls) if not (l in seen or seen.add(l))]
-
+    sector_handles = [
+        Line2D([0], [0], marker="o", color="w", label=s,
+               markerfacecolor=SECTOR_COLORS[s], markersize=8)
+        for s in sectors
+    ]
     sector_legend = ax.legend(
-        [h for h, _ in uniq], [l for _, l in uniq],
+        handles=sector_handles,
         loc="upper left", bbox_to_anchor=(1.01, 1.0),
-        fontsize=9, frameon=False,
+        fontsize=9, frameon=False, labelspacing=0.55,
         title="GICS Sector  (color)", title_fontsize=10,
     )
     ax.add_artist(sector_legend)
 
     shape_handles = [
-        Line2D([0], [0], marker="s", color="w", label="IT",
-               markerfacecolor="#666", markersize=9),
-        Line2D([0], [0], marker="o", color="w", label="Services",
-               markerfacecolor="#666", markersize=9),
-        Line2D([0], [0], marker="^", color="w", label="Goods",
-               markerfacecolor="#666", markersize=9),
+        Line2D([0], [0], marker=SUPER_SHAPE[s], color="w", label=s,
+               markerfacecolor="#666", markersize=9)
+        for s in ("IT", "Services", "Goods")
     ]
+    shape_handles.append(
+        Line2D([0], [0], marker="o", color="w", label="surprise",
+               markerfacecolor="#888", markeredgecolor="black",
+               markeredgewidth=1.8, markersize=10)
+    )
     ax.legend(
-        handles=shape_handles, loc="lower left",
-        bbox_to_anchor=(1.01, 0.0),
-        fontsize=9, frameon=False,
+        handles=shape_handles,
+        loc="lower left", bbox_to_anchor=(1.01, 0.0),
+        fontsize=9, frameon=False, labelspacing=0.55,
         title="Super-sector  (shape)", title_fontsize=10,
     )
 
-    fig.subplots_adjust(left=0.05, right=0.72, top=0.93, bottom=0.07)
+    fig.subplots_adjust(left=0.06, right=0.78, top=0.93, bottom=0.07)
     out_png = FIG_DIR / "semantic_map.png"
     out_pdf = FIG_DIR / "semantic_map.pdf"
     fig.savefig(out_png, dpi=300)
@@ -246,7 +289,9 @@ def main() -> None:
     print(f"Saved {out_png}")
     print(f"Saved {out_pdf}")
 
-    df.drop(columns=["dist"]).to_csv(ROOT / "data" / "sp500_scored.csv", index=False)
+    df.drop(columns=["dist"]).to_csv(
+        ROOT / "data" / "sp500_scored.csv", index=False
+    )
     print(f"Saved {ROOT / 'data' / 'sp500_scored.csv'}")
 
 
