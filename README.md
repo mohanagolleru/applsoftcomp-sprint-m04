@@ -22,11 +22,11 @@ bash run.sh
 ```
 
 Outputs:
-- `figures/semantic_map.png` and `figures/semantic_map.pdf` — the deliverable figure
+- `figs/semantic_map.png` and `figs/semantic_map.pdf` — the deliverable figure
 - `data/sp500.csv` — Wikipedia-scraped constituents (overwritten by `scripts/fetch_sp500.py`)
 - `data/sp500_scored.csv` — every firm with its `(x, y)` projection
 
-Read `NOTE.md` for what separates along each axis, the most surprising firm, and what a third axis would add. `REPORT.md` lists team members.
+Read `NOTE.md` for the team members and the three-paragraph observations: what separates along each axis, the most surprising firm, and what a third axis would add.
 
 ### Repo layout
 
@@ -35,9 +35,8 @@ scripts/build_figure.py   ← our pipeline (embedding + axes + scatter)
 scripts/fetch_sp500.py    ← upstream-provided Wikipedia scraper
 run.sh                    ← single command, no manual steps
 data/sp500.csv            ← raw company list
-figures/semantic_map.*    ← final figure (PNG + PDF)
-NOTE.md                   ← three-paragraph observations
-REPORT.md                 ← team members
+figs/semantic_map.*       ← final figure (PNG + PDF)
+NOTE.md                   ← team members + three-paragraph observations
 assignment.py             ← upstream worked example, kept for reference
 ```
 

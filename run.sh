@@ -9,7 +9,7 @@
 #      writes data/sp500.csv (existing CSV is overwritten so the figure
 #      always reflects the latest list).
 #   2. Computes two SemAxis directions, scores every firm, and renders
-#      figures/semantic_map.{png,pdf}.
+#      figs/semantic_map.{png,pdf}.
 #
 # Both Python scripts use PEP-723 inline metadata, so `uv` resolves and
 # installs their exact dependencies into ephemeral environments. The
@@ -17,7 +17,7 @@
 
 set -euo pipefail
 
-mkdir -p data figures
+mkdir -p data figs
 
 echo "[1/2] Fetching S&P 500 constituents from Wikipedia..."
 uv run --with "requests" --with "beautifulsoup4" \
@@ -30,4 +30,4 @@ echo
 echo "Done."
 echo "  Data   : data/sp500.csv"
 echo "  Scored : data/sp500_scored.csv"
-echo "  Figure : figures/semantic_map.png  figures/semantic_map.pdf"
+echo "  Figure : figs/semantic_map.png  figs/semantic_map.pdf"

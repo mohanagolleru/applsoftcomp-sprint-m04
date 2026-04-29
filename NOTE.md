@@ -1,5 +1,7 @@
 # Observations — S&P 500 Semantic Map
 
+**Team members:** Mohan Golleru, Rahul.
+
 **Embedding model:** `all-MiniLM-L6-v2` (sentence-transformers, 90 MB).
 **Pipeline diagnostics:** axis-1 pole separation = 0.543, axis-2 pole separation = 0.544 (both well above the 0.30 rule-of-thumb), |cos(axis-1, axis-2)| = 0.081 — the two axes are very close to orthogonal, so the plot uses both dimensions independently rather than collapsing onto a single direction.
 

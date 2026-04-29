@@ -38,7 +38,7 @@ from sentence_transformers import SentenceTransformer
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data" / "sp500.csv"
-FIG_DIR = ROOT / "figures"
+FIG_DIR = ROOT / "figs"
 
 EMBED_MODEL = "all-MiniLM-L6-v2"
 
@@ -170,6 +170,30 @@ def main() -> None:
         label_rows.append(q)
     df_labels = pd.concat(label_rows, ignore_index=True)
 
+    # Zero lines (rubric: "zero lines ... help").
+    zero_x = alt.Chart(pd.DataFrame({"v": [0]})).mark_rule(
+        color="#bbb", strokeWidth=0.7
+    ).encode(x="v:Q")
+    zero_y = alt.Chart(pd.DataFrame({"v": [0]})).mark_rule(
+        color="#bbb", strokeWidth=0.7
+    ).encode(y="v:Q")
+
+    # Quadrant annotations (rubric: "quadrant annotations help").
+    xmin, xmax = float(df_scored["x"].min()), float(df_scored["x"].max())
+    ymin, ymax = float(df_scored["y"].min()), float(df_scored["y"].max())
+    def _quad(x_, y_, label, align, baseline):
+        return alt.Chart(pd.DataFrame([{"x": x_, "y": y_, "t": label}])).mark_text(
+            fontSize=11, color="#888", fontStyle="italic", fontWeight=600,
+            align=align, baseline=baseline, dx=8 if align == "left" else -8,
+            dy=8 if baseline == "top" else -8,
+        ).encode(x="x:Q", y="y:Q", text="t:N")
+    quad_text = (
+        _quad(xmin, ymax, "industrial + consumer",   "left",  "top")
+        + _quad(xmax, ymax, "tech + consumer",       "right", "top")
+        + _quad(xmin, ymin, "industrial + enterprise","left",  "bottom")
+        + _quad(xmax, ymin, "tech + enterprise",     "right", "bottom")
+    )
+
     base = alt.Chart(df_scored)
     points = base.mark_point(
         size=120, opacity=0.85, filled=True, strokeWidth=0.6, stroke="white",
@@ -210,18 +234,13 @@ def main() -> None:
     )
 
     chart = (
-        (points + text)
+        (zero_x + zero_y + quad_text + points + text)
         .properties(
             width=780,
             height=520,
             title=alt.TitleParams(
                 text="S&P 500 in a 2D semantic space",
-                subtitle=[f"SemAxis on {EMBED_MODEL};  n = {len(df)};  "
-                          f"pole separations = {sep1:.2f} / {sep2:.2f};  "
-                          f"|cos(axis1, axis2)| = {ortho:.2f}"],
                 fontSize=15,
-                subtitleFontSize=10,
-                subtitleColor="#555",
                 anchor="start",
                 offset=10,
             ),
